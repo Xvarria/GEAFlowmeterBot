@@ -1,0 +1,8 @@
+com/gea/web/model/response/ProcesoResponse.class
+com/gea/web/model/response/LecturaResponse.class
+com/gea/web/model/request/LecturaMedidorRequest.class
+com/gea/web/model/response/ReasonCode.class
+com/gea/bot/model/SegmentoConsumo.class
+com/gea/web/model/response/CompletationCode.class
+com/gea/web/model/request/LecturaRequest.class
+com/gea/bot/model/Medidor.class
