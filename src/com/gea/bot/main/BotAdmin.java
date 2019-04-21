@@ -131,7 +131,7 @@ public class BotAdmin {
             String[] secuencia = cadena.split(" ");
             String[] parametros = new String[]{};
 
-            //Obtiene los par�metros si los hay
+            //Obtiene los parámetros si los hay
             String comando = null;
             if (secuencia.length > 0) {
                 comando = secuencia[0];
@@ -147,7 +147,7 @@ public class BotAdmin {
 
                 }
             }
-            //Procesa el commando y sus par�metros, env�a el entorno, para que los comando
+            //Procesa el commando y sus parámetros, envía el entorno, para que los comando
             //que tiene impacto en el entorno, registren sus cambios
             procesador.ejecutaComando(entorno, comando, parametros);
         }

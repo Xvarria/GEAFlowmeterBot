@@ -1,4 +1,4 @@
-package com.gea.bot.main;
+package com.gea.bot.comandos.impl;
 
 /**
  * Enum de los comandos, v�lidos y que pueden ser procesados
@@ -6,8 +6,10 @@ package com.gea.bot.main;
  * @author naviles
  */
 public enum TipoComando {
-    EXIT,
-    HELP;
+    ADD,
+    HELP,
+	EXIT,
+    ;
 
     /**
      * Obtiene el tipo, basado en el comando digitado
