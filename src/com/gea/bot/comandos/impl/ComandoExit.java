@@ -1,12 +1,8 @@
 package com.gea.bot.comandos.impl;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-import com.gea.bot.model.Entorno;
+import com.gea.bot.main.Entorno;
 import com.gea.bot.model.exception.ExcepcionEjecucion;
 import com.gea.bot.model.exception.TipoError;
 
@@ -24,20 +20,8 @@ public class ComandoExit extends ComandoBase {
             case 'S':
                 System.out.println("Digite una tecla para salir ¡Hasta pronto!");
                 //Guarda la información en los archivo
-                FileOutputStream archivo = null;
-                ObjectOutputStream objectStream = null;
-                try {
-                    archivo = new FileOutputStream(new File(Entorno.RUTA_ARCHIVO));
-                    //Guarda el objento MapaArchivo del entorno, con todo su contenido
-                    objectStream = new ObjectOutputStream(archivo);
-                    objectStream.writeObject(entorno.getListaMedidor());
-
-                } catch (IOException e) {
-                    throw new ExcepcionEjecucion(TipoError.ERROR_0002_OPCION_INVALIDA);
-                } finally {
-                    entorno.setFinalizar(true);
-                    System.exit(0);
-                }
+                entorno.setFinalizar(true);
+                System.exit(0);
 
                 break;
             case 'n':

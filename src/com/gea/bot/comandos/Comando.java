@@ -1,6 +1,6 @@
 package com.gea.bot.comandos;
 
-import com.gea.bot.model.Entorno;
+import com.gea.bot.main.Entorno;
 import com.gea.bot.model.exception.ExcepcionEjecucion;
 import com.gea.bot.model.exception.ExcepcionSinstaxis;
 

@@ -78,7 +78,7 @@ public enum SegmentoConsumo implements Serializable {
 		this.gobierno = gobierno;
 	}
 	
-	public SegmentoConsumo getSegmentoConsumoPorNombe(String nombre) {
+	public static SegmentoConsumo getSegmentoConsumoPorNombe(String nombre) {
 		SegmentoConsumo retVal = null;
 		Iterator<SegmentoConsumo> segIterator = Arrays.asList(SegmentoConsumo.values()).iterator();
 		while(segIterator.hasNext() && retVal == null) {

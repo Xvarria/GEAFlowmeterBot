@@ -4,7 +4,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import com.gea.bot.comandos.Comando;
-import com.gea.bot.model.Entorno;
 import com.gea.bot.model.Utils;
 import com.gea.bot.model.exception.ExcepcionEjecucion;
 import com.gea.bot.model.exception.ExcepcionSinstaxis;

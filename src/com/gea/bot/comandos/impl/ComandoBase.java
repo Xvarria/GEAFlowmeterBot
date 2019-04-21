@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.gea.bot.comandos.Comando;
 import com.gea.bot.comandos.ParametroAyuda;
-import com.gea.bot.model.Entorno;
+import com.gea.bot.main.Entorno;
 import com.gea.bot.model.exception.ExcepcionEjecucion;
 import com.gea.bot.model.exception.ExcepcionSinstaxis;
 import com.gea.bot.model.exception.TipoError;
@@ -38,11 +38,11 @@ public class ComandoBase implements Comando, ParametroAyuda {
 	}
 	
 	 public void ejecutar(Entorno entorno, String... parametros) throws ExcepcionEjecucion {
-		 if (this.isParametroAyuda(parametros)) {
-	        	this.helpParametros();
-	        }else {
-	        	this.ejecutarAccion(entorno, parametros);
-	        }
+		if (this.isParametroAyuda(parametros)) {
+			this.helpParametros();
+		} else {
+			this.ejecutarAccion(entorno, parametros);
+		}
 	 }
 
 	@Override

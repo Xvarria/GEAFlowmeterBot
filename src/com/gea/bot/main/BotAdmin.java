@@ -1,16 +1,7 @@
 package com.gea.bot.main;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
-import com.gea.bot.model.Entorno;
-import com.gea.bot.model.Medidor;
 
 /**
  *
@@ -46,59 +37,8 @@ public class BotAdmin {
         // Busca los archivos para inicializar el entorno
         // Si los archivos no existen los crea e inicializa el entorno con
         // valores por defecto
-    	List<Medidor> listaMedidor = inicializarMedidores();
     	entorno = new Entorno();
-    	entorno.setListaMedidor(listaMedidor);
-    }
-
-    /**
-     * Lee el archivo de archivos y directorios, recupera la información. Si el
-     * archivo no existe o no es válido, inicializa con valores por default.
-     *
-     * @return
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    @SuppressWarnings("unchecked")
-	private static List<Medidor> inicializarMedidores() throws FileNotFoundException, IOException {
-        //Se valida la existencia del archivo y el contenido, si el archivo no existe o su contenido es invalido
-        //La informacion es cargada con valores por defecto
-    	List<Medidor> listaMedidor = new ArrayList<>();
-        boolean datoArchivoCorrecto = false;
-        FileInputStream archivo = null;
-        ObjectInputStream objectStream = null;
-
-        try {
-            //Se abre el archivo y se inicializa con la dirección
-            archivo = new FileInputStream(new File(Entorno.RUTA_ARCHIVO));
-            //Se cre aun objecto InputStream para leer obheto serializados del archivo (esto permite guardar y leer todo el objeto de manera m�s f�cil y segura)
-            objectStream = new ObjectInputStream(archivo);
-
-            listaMedidor = (List<Medidor>)objectStream.readObject();//Obtiene el objeto desde el archivo.
-            datoArchivoCorrecto = true;
-
-        } catch (Exception e) {
-            datoArchivoCorrecto = false;
-        } finally {
-            if (archivo != null) {
-                archivo.close();
-            }
-
-            if (objectStream != null) {
-                objectStream.close();
-            }
-        }
-        //Registra el resultado del proceso
-        if (datoArchivoCorrecto) {
-            System.out.println("Medidores recuperados -> ");
-            for(Medidor medidor : listaMedidor) {
-            	System.out.println(medidor.toString());
-            }
-        } else {
-            System.out.println("Medidores NO recuperados");
-        }
-
-        return listaMedidor;
+    	entorno.recuerperarArchivo();
     }
 
     /**

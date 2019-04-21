@@ -1,12 +1,14 @@
 package com.gea.bot.comandos.impl;
 
 /**
- * Enum de los comandos, v�lidos y que pueden ser procesados
+ * Enum de los comandos, válidos y que pueden ser procesados
  *
  * @author naviles
  */
 public enum TipoComando {
     ADD,
+    REMOVE,
+    LIST,
     HELP,
 	EXIT,
     ;

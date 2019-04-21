@@ -9,8 +9,14 @@ public enum TipoError {
 
     ERROR_0001_COMANDO_INVALIDO(1, "Comando Inválido"),
     ERROR_0002_OPCION_INVALIDA(2, "Opción digitada no es válida"),
-    ERROR_0003_PARAMETRO_INVALIDO(3, "Parametro '$' es inválido"),
-    ERROR_0004_COMANDO_NO_IMPLEMENTADO(4, "Comando no implementado"),;
+    ERROR_0003_REQUIERE_PARAMETROS(3, "El Comando requiere parámetros"),
+    ERROR_0004_COMANDO_NO_IMPLEMENTADO(4, "Comando no implementado"),
+    ERROR_0005_ERROR_GUARDAR_ARCHIVO(5, "Error al guardar el archivo"),
+    ERROR_0006_ERROR_LEER_ARCHIVO(6, "Error al leer el archivo"),
+    ERROR_0007_MEDIDOR_YA_EXISTE(7, "Medidor ya existe"),
+    ERROR_0008_PARAMETRO_INVALIDO(8,"Parámetro inválido"),
+	ERROR_0009_PARAMETRO_ID_REQUERIDO(9,"Parámetro ID requreido debe ser entero"),
+	ERROR_0010_MEDIDOR_NO_EXISTE(10,"Medidor no existe"),;
     private final int codigo;
     private final String mensaje;
 

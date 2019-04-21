@@ -10,7 +10,7 @@ public class Medidor implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int medidorId;
 	private SegmentoConsumo segmentoConsumo;
-	private float ultimaLectura;
+	private double ultimaLectura;
 	
 	public int getMedidorId() {
 		return medidorId;
@@ -24,10 +24,10 @@ public class Medidor implements Serializable {
 	public void setSegmentoConsumo(SegmentoConsumo segmentoConsumo) {
 		this.segmentoConsumo = segmentoConsumo;
 	}
-	public float getUltimaLectura() {
+	public double getUltimaLectura() {
 		return ultimaLectura;
 	}
-	public void setUltimaLectura(float ultimaLectura) {
+	public void setUltimaLectura(double ultimaLectura) {
 		this.ultimaLectura = ultimaLectura;
 	}
 	public static long getSerialversionuid() {
@@ -40,7 +40,9 @@ public class Medidor implements Serializable {
 		int result = 1;
 		result = prime * result + medidorId;
 		result = prime * result + ((segmentoConsumo == null) ? 0 : segmentoConsumo.hashCode());
-		result = prime * result + Float.floatToIntBits(ultimaLectura);
+		long temp;
+		temp = Double.doubleToLongBits(ultimaLectura);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 	
@@ -57,7 +59,7 @@ public class Medidor implements Serializable {
 			return false;
 		if (segmentoConsumo != other.segmentoConsumo)
 			return false;
-		if (Float.floatToIntBits(ultimaLectura) != Float.floatToIntBits(other.ultimaLectura))
+		if (Double.doubleToLongBits(ultimaLectura) != Double.doubleToLongBits(other.ultimaLectura))
 			return false;
 		return true;
 	}
@@ -69,6 +71,18 @@ public class Medidor implements Serializable {
 		builder.append(",\nsegmentoConsumo=");
 		builder.append(segmentoConsumo);
 		builder.append(",\nultimaLectura=");
+		builder.append(ultimaLectura);
+		builder.append("]");
+		return builder.toString();
+	}	
+	
+	public String toStringLine() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Medidor [medidorId=");
+		builder.append(medidorId);
+		builder.append(", segmentoConsumo=");
+		builder.append(segmentoConsumo);
+		builder.append(", ultimaLectura=");
 		builder.append(ultimaLectura);
 		builder.append("]");
 		return builder.toString();
