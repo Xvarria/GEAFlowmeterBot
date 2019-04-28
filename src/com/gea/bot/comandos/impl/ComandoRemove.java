@@ -1,7 +1,6 @@
 package com.gea.bot.comandos.impl;
 
 import com.gea.bot.main.Entorno;
-import com.gea.bot.model.Medidor;
 import com.gea.bot.model.Utils;
 import com.gea.bot.model.exception.ExcepcionEjecucion;
 import com.gea.bot.model.exception.ExcepcionSinstaxis;
