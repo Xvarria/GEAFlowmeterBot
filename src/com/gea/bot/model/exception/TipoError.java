@@ -16,7 +16,8 @@ public enum TipoError {
     ERROR_0007_MEDIDOR_YA_EXISTE(7, "Medidor ya existe"),
     ERROR_0008_PARAMETRO_INVALIDO(8,"Parámetro inválido"),
 	ERROR_0009_PARAMETRO_ID_REQUERIDO(9,"Parámetro ID requreido debe ser entero"),
-	ERROR_0010_MEDIDOR_NO_EXISTE(10,"Medidor no existe"),;
+	ERROR_0010_MEDIDOR_NO_EXISTE(10,"Medidor no existe"),
+	ERROR_0011_ERROR_ARCHIVO_NO_DETALLADO(11, "Error archivo no detallado"),;
     private final int codigo;
     private final String mensaje;
 

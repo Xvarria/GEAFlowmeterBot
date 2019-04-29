@@ -12,6 +12,10 @@ public class LecturaResponse extends ProcesoResponse {
 	private long initTime;
 	private long finishTime;
 	
+	public LecturaResponse() {
+		super();
+	}
+	
 	public LecturaResponse(ProcesoResponse response, long initTime, long finishTime) {
 		super(response);
 		this.initTime = initTime;

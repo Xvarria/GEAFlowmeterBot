@@ -29,7 +29,7 @@ public class Registro implements Serializable {
 		this.bloqueado = bloqueado;
 	}
 
-	protected List<Medidor> getListaMedidor() {
+	public List<Medidor> getListaMedidor() {
 		return listaMedidor;
 	}
 

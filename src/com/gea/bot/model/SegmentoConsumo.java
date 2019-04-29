@@ -14,14 +14,14 @@ public enum SegmentoConsumo implements Serializable {
 	C6_101_120(101, 120, 1703, 1703, 783, 1703),
 	C7_121_MAS(121, -1, 1790, 1790, 783, 1790);
 	
-	private int minimo;
-	private int maximo;
+	private double minimo;
+	private double maximo;
 	private double domiciliar;
 	private double empresarial;
 	private double preferencial;
 	private double gobierno;
 
-	private SegmentoConsumo(int minimo, int maximo, double domiciliar, double empresarial, double preferencial, double gobierno) {
+	private SegmentoConsumo(double minimo, double maximo, double domiciliar, double empresarial, double preferencial, double gobierno) {
 		this.minimo = minimo;
 		this.maximo = maximo;
 		this.domiciliar = domiciliar;
@@ -30,19 +30,19 @@ public enum SegmentoConsumo implements Serializable {
 		this.gobierno = gobierno;
 	}
 
-	public int getMinimo() {
+	public double getMinimo() {
 		return minimo;
 	}
 
-	public void setMinimo(int minimo) {
+	public void setMinimo(double minimo) {
 		this.minimo = minimo;
 	}
 
-	public int getMaximo() {
+	public double getMaximo() {
 		return maximo;
 	}
 
-	public void setMaximo(int maximo) {
+	public void setMaximo(double maximo) {
 		this.maximo = maximo;
 	}
 

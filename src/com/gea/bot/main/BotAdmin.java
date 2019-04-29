@@ -38,7 +38,7 @@ public class BotAdmin {
         // Si los archivos no existen los crea e inicializa el entorno con
         // valores por defecto
     	entorno = new Entorno();
-    	entorno.recuerperarArchivo();
+    	entorno.recuerperarArchivoHandled();
     }
 
     /**

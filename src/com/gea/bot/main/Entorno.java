@@ -1,5 +1,8 @@
 package com.gea.bot.main;
 
+import static com.gea.bot.model.Constants.INTERVAL_MS;
+import static com.gea.bot.model.Constants.RUTA_ARCHIVO;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -20,29 +23,8 @@ public class Entorno implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private static int intervalS = 30;
-	private final static int INTERVAL_MS = intervalS * 1000;
-
-	private static final String RUTA_ARCHIVO = "/registoBot";
 	private boolean finalizar;
-
 	private Registro registro = new Registro();
-
-	public static int getIntervalS() {
-		return intervalS;
-	}
-
-	public static void setIntervalS(int intervalS) {
-		Entorno.intervalS = intervalS;
-	}
-
-	/*
-	 * public List<Medidor> getListaMedidor() { return listaMedidor; }
-	 * 
-	 * public void setListaMedidor(List<Medidor> listaMedidor) { this.listaMedidor =
-	 * listaMedidor; }
-	 */
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -69,7 +51,7 @@ public class Entorno implements Serializable {
 		}
 	}
 
-	public void recuerperarArchivo() {
+	public void recuerperarArchivoHandled() {
 		try {
 			this.leerRegistro();
 			this.mostrarRegistro();
@@ -93,11 +75,19 @@ public class Entorno implements Serializable {
 		registro.displayMedidores();
 	}
 	
-	public void listMedidores() throws  ExcepcionEjecucion{
+	public void listMedidores() throws  ExcepcionEjecucion, ExcepcionArchivo{
+		this.listMedidores(false);
+	}
+	
+	public void listMedidores(boolean bloqueo) throws  ExcepcionEjecucion, ExcepcionArchivo{
 		try {
+			if (bloqueo) {
+				this.bloquearArchivo();
+			}
 			this.leerRegistro();
 			this.mostrarRegistro();
 		} catch (ExcepcionArchivo e) {
+			this.desbloquearArchivo();
 			throw new ExcepcionEjecucion(e.getError());
 		}
 	}
@@ -134,6 +124,14 @@ public class Entorno implements Serializable {
 		}
 	}
 	
+	public void actualizarArchivoSender() throws ExcepcionEjecucion {
+		try {
+			this.guardarArchivo();
+		} catch (ExcepcionArchivo e) {
+			throw new ExcepcionEjecucion(e.getError());
+		}		
+	}
+	
 	private void bloquearArchivo() throws ExcepcionArchivo{
 		cambiarBloqueo(true);
 	}
@@ -153,7 +151,7 @@ public class Entorno implements Serializable {
 		ObjectInputStream objectStream = null;
 		try {
 			// Se abre el archivo y se inicializa con la dirección
-			archivo = new FileInputStream(new File(Entorno.RUTA_ARCHIVO));
+			archivo = new FileInputStream(new File(RUTA_ARCHIVO));
 			// Se cre aun objecto InputStream para leer obheto serializados del archivo
 			// (esto permite guardar y leer todo el objeto de manera más fácil y segura)
 			objectStream = new ObjectInputStream(archivo);
@@ -178,7 +176,7 @@ public class Entorno implements Serializable {
 		FileOutputStream archivo = null;
 		ObjectOutputStream objectStream = null;
 		try {
-			archivo = new FileOutputStream(new File(Entorno.RUTA_ARCHIVO));
+			archivo = new FileOutputStream(new File(RUTA_ARCHIVO));
 			// Guarda el objento MapaArchivo del entorno, con todo su contenido
 			objectStream = new ObjectOutputStream(archivo);
 			objectStream.writeObject(this.registro);
@@ -187,4 +185,13 @@ public class Entorno implements Serializable {
 			throw new ExcepcionArchivo(TipoError.ERROR_0005_ERROR_GUARDAR_ARCHIVO);
 		}
 	}
+
+	public Registro getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(Registro registro) {
+		this.registro = registro;
+	}
+	
 }
