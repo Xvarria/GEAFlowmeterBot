@@ -16,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.gea.bot.model.Medidor;
 import com.gea.bot.model.Registro;
-import com.gea.bot.model.SegmentoConsumo;
 import com.gea.bot.model.exception.ExcepcionEjecucion;
 import com.gea.web.model.request.LecturaMedidorRequest;
 import com.gea.web.model.request.LecturaRequest;
