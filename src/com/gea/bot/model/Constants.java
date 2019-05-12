@@ -12,7 +12,7 @@ public final class Constants {
 	public static final String APP_KEY = "599a2382-ed18-423b-8074-d70cfe78b921";
 	
 	public final static int DELAY_MS = 1000;
-	public final static int INTERVAL_S = 60;
+	public final static int INTERVAL_S = 15;
 	public final static int INTERVAL_MS = INTERVAL_S * 1000;
 
 	

@@ -78,7 +78,7 @@ public class EmularMedidores implements Runnable {
 			}
 			
 			request.setApiKey(APP_KEY);
-			request.setTimestamp(Calendar.getInstance().getTimeInMillis());
+			request.setTimestamp(Calendar.getInstance().getTimeInMillis()/1000); // Se divide entre 100 para obteber solo 10 dígitos
 			request.setData(data);
 			System.out.println("Request element:  " + request.toString());
 			System.out.println("*****   Invoke remote ws *********");

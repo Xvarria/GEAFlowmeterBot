@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LecturaRequest {
 
 	private String apiKey;
-	private long timestamp;
+	private double timestamp;
 	private Set<LecturaMedidorRequest> data;
 	
 	public LecturaRequest() {
@@ -32,11 +32,11 @@ public class LecturaRequest {
 		this.apiKey = apiKey;
 	}
 
-	public long getTimestamp() {
+	public double getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(long timestamp) {
+	public void setTimestamp(double timestamp) {
 		this.timestamp = timestamp;
 	}
 
@@ -48,16 +48,24 @@ public class LecturaRequest {
 		this.data = data;
 	}
 
+	/**
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((apiKey == null) ? 0 : apiKey.hashCode());
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
-		result = prime * result + (int) (timestamp ^ (timestamp >>> 32));
+		long temp;
+		temp = Double.doubleToLongBits(timestamp);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
+	/**
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -77,7 +85,7 @@ public class LecturaRequest {
 				return false;
 		} else if (!data.equals(other.data))
 			return false;
-		if (timestamp != other.timestamp)
+		if (Double.doubleToLongBits(timestamp) != Double.doubleToLongBits(other.timestamp))
 			return false;
 		return true;
 	}
